@@ -1,0 +1,26 @@
+<div>
+    <h1>Register a Survey Poodle account</h1>
+    <form>
+        <div>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter your username..." [(ngModel)]="user.username">
+        </div>
+    
+        <div>
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password" placeholder="Enter your password..." [(ngModel)]="user.password">
+        </div>
+        <br>
+        <button (click)="onRegisterClicked()" type="button" [disabled]="isLoading">Register</button>
+        <br>
+
+        <div *ngIf="registerError">
+            <p>ERROR: {{registerError}}</p>
+        </div>
+        <div *ngIf="isLoading">
+            <p>Registring your account...</p>
+        </div>
+    </form>
+    <br>
+    <a routerLink="/login">I already have an account, Login</a>
+</div>
