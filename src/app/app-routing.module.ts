@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PokemonPageComponent } from './pages/pokemon-page/pokemon-page.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: '/login'
+  },
+  {
+    path: 'pokemon',
+    component: PokemonPageComponent
   }
 ];
 
