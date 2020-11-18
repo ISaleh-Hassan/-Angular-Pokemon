@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 
 @Component({
@@ -9,19 +9,22 @@ import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 export class PokemonCardComponent implements OnInit {
 
   @Input() pokemonUrl:any;
+  @Output() onClickCard: EventEmitter<any> = new EventEmitter();
   pokemon: any;
   constructor(private pokeService: PokemonService) {};
 
   
 
   ngOnInit(): void {
-    this.getPokemon();    
+    this.getPokemon();
   }
 
   async getPokemon(){
-    const result: any = await this.pokeService.getPokemon(this.pokemonUrl.url);
+    const result: any = await this.pokeService.getPokemonByUrl(this.pokemonUrl.url);
     this.pokemon = result;
-    
+  }
+  onPokemonCardClick(){
+    this.onClickCard.emit(this.pokemon);
     
   }
 }

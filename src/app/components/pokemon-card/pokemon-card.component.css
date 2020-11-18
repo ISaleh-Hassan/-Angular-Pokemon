@@ -8,3 +8,11 @@
     border: 1px black solid;
     margin-right: 10px;
 }
+
+.card:hover{
+    cursor: pointer;
+}
+
+.name{
+    text-transform: capitalize;
+}

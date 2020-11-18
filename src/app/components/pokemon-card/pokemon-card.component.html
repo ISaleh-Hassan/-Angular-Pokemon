@@ -1,5 +1,5 @@
 
-<div class="card" *ngIf="pokemon">
+<div class="card" *ngIf="pokemon" (click)="onPokemonCardClick()" >
     <img src="{{pokemon.sprites.front_default}}" alt="">
-    <h1>{{pokemon.name}}</h1>
+    <h1 class="name">{{pokemon.name}}</h1>
 </div>
