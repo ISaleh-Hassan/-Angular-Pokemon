@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services/session/session.service';
 import { AuthService } from '../../services/auth/auth.service';
@@ -12,16 +13,16 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  user = {
-    username: '',
-    password: ''
-  }
+ registerForm: FormGroup = new FormGroup({
+    username: new FormControl('', [ Validators.required, Validators.minLength(3)]),
+    password: new FormControl('',[ Validators.required, Validators.minLength(1)])
+  });
 
   isLoading: boolean = false;
   registerError!: string;
 
   constructor(private auth: AuthService, private session: SessionService, private router:Router) { 
-    if(this.session.get() !==''){
+    if(this.session.get() !==false){
       //Redirect to any side
       this.router.navigateByUrl('/dashboard')
     }
@@ -29,16 +30,28 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  get username(){
+    return this.registerForm.get('username');
+  }
+
+  get password(){
+    return this.registerForm.get('password');
+  }
+
   async onRegisterClicked(){
     this.registerError = '';
 
     try{
       this.isLoading= true;
 
-      const result: any = await this.auth.register(this.user);
+      const result: any = await this.auth.register(this.registerForm.value);
       
       if(result.status < 400){
-          this.session.save(result.data.token);
+          this.session.save({
+            token: result.data.token,
+            username: result.data.user.username
+          });
           this.router.navigateByUrl('/dashboard');
         }
 

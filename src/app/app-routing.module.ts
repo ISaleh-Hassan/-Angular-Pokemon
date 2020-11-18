@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,18 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    loadChildren: ()=> import('./components/dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'surveys',
+    loadChildren: () => import('./components/survey/survey-list/survey-list.module').then(m=> m.SurveyListModule),
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'surveys/:surveyId',
+    loadChildren: () => import('./components/survey/survey-detail/survey-detail.module').then(m=> m.SurveyDetailModule),
+    canActivate: [ AuthGuard ]
   },
   {
     path: '',

@@ -14,4 +14,10 @@ export class AuthService {
       user:{...user}
     }).toPromise();
   }
+
+  login(user:any): Promise<any>{
+    return this.http.post(`${environment.apiUrl}/v1/api/users/login`,{
+      user:{...user}
+    }).toPromise();
+  }
 }
