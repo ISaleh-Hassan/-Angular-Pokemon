@@ -17,7 +17,16 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/register'
+    redirectTo: '/pokemon'
+  },
+  {
+    path: 'pokemon',
+    loadChildren: () => import('./pages/pokemon-page/pokemon-page.module').then(m => m.PokemonPageModule),
+  },
+  {
+    path: 'pokemon/:pokemonId',
+    loadChildren: () => import('./pages/pokemon-detail-page/pokemon-detain-page.module').then(m => m.PokemonDetailPageModule),
+    canActivate: [ AuthGuard ]
   }
 ];
 

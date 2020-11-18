@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private session: SessionService, private router:Router) { 
     if(this.session.get() !==false){
-      this.router.navigateByUrl('/dashboard')
+      this.router.navigateByUrl('/pokemon')
     }
   }
 
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
 
       this.isLoading= true;
       this.session.save(this.registerForm.value);  
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/pokemon');
 
     }catch(e){
       console.error(e);
