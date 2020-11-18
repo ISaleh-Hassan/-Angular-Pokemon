@@ -7,12 +7,13 @@ export class SessionService {
 
   constructor() { }
 
-  save(token: string){
-    localStorage.setItem('sp_jwt',token)
+  save(session: any){
+    localStorage.setItem('sp_session',JSON.stringify(session));
   }
 
-  get(): string{
-    return localStorage.getItem('sp_jwt') || '';
+  get(): any {
+    const savedSession = localStorage.getItem('sp_session');
+    return savedSession ? JSON.parse(savedSession) : false;
   }
   
 }

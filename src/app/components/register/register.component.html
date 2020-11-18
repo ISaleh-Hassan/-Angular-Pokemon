@@ -1,26 +1,23 @@
-<div>
-    <h1>Register a Survey Poodle account</h1>
-    <form>
-        <div>
+<div class="container">
+    <h1>Register a new trainer</h1>
+    <form [formGroup]= "registerForm">
+        <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Enter your username..." [(ngModel)]="user.username">
+            <input class="form-control" type="text" name="username" id="username" placeholder="Enter your username..." 
+            formControlName="username" required minlength="3">
         </div>
     
-        <div>
-            <label for="password">Password</label>
-            <input type="text" name="password" id="password" placeholder="Enter your password..." [(ngModel)]="user.password">
+        <div class="form-group">
+            <button class="btn btn-success btn-lg" (click)="onRegisterClicked()" type="button" [disabled]="isLoading || registerForm.invalid">Register</button>
         </div>
-        <br>
-        <button (click)="onRegisterClicked()" type="button" [disabled]="isLoading">Register</button>
-        <br>
-
-        <div *ngIf="registerError">
-            <p>ERROR: {{registerError}}</p>
+   
+        <div *ngIf="registerError" class="alert alert-danger" role="alert">
+            <h4>Something went wrong</h4>
+            <p>{{ registerError }}</p>
         </div>
         <div *ngIf="isLoading">
-            <p>Registring your account...</p>
+            <p>Register a new trainer</p>
         </div>
     </form>
-    <br>
-    <a routerLink="/login">I already have an account, Login</a>
+     
 </div>

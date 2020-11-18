@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services/session/session.service';
-import { AuthService } from '../../services/auth/auth.service';
 
 
 
@@ -12,35 +12,34 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  user = {
-    username: '',
-    password: ''
-  }
+ registerForm: FormGroup = new FormGroup({
+    username: new FormControl('', [ Validators.required, Validators.minLength(3)])
+  });
 
   isLoading: boolean = false;
   registerError!: string;
 
-  constructor(private auth: AuthService, private session: SessionService, private router:Router) { 
-    if(this.session.get() !==''){
-      //Redirect to any side
-      this.router.navigateByUrl('/dashboard')
+  constructor(private session: SessionService, private router:Router) { 
+    if(this.session.get() !==false){
+      this.router.navigateByUrl('/pokemon')
     }
   }
 
   ngOnInit(): void {
   }
-  async onRegisterClicked(){
+
+  get username(){
+    return this.registerForm.get('username');
+  }
+
+  onRegisterClicked(){
     this.registerError = '';
 
     try{
-      this.isLoading= true;
 
-      const result: any = await this.auth.register(this.user);
-      
-      if(result.status < 400){
-          this.session.save(result.data.token);
-          this.router.navigateByUrl('/dashboard');
-        }
+      this.isLoading= true;
+      this.session.save(this.registerForm.value);  
+      this.router.navigateByUrl('/pokemon');
 
     }catch(e){
       console.error(e);

@@ -1,26 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LoginComponent } from './components/login/login.component';
+
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent
-  },
   {
     path: 'register',
     component: RegisterComponent
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    loadChildren: ()=> import('./components/dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [ AuthGuard ]
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/login'
+    redirectTo: '/pokemon'
   },
   {
     path: 'pokemon',
@@ -29,6 +26,7 @@ const routes: Routes = [
   {
     path: 'pokemon/:pokemonId',
     loadChildren: () => import('./pages/pokemon-detail-page/pokemon-detain-page.module').then(m => m.PokemonDetailPageModule),
+    canActivate: [ AuthGuard ]
   }
 ];
 
