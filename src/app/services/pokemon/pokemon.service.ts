@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,13 @@ export class PokemonService {
 
   getMultiplePokemon():Promise<any>{
 
-    return this.http.get("https://pokeapi.co/api/v2/pokemon?limit=10").toPromise();
+    return this.http.get(`${environment.baseUrl}/api/v2/pokemon?limit=10`).toPromise();
   }
-  getPokemon(url : string):Promise<any>{
+  getPokemonByUrl(url : string):Promise<any>{
     return this.http.get(url).toPromise();
+  }
+
+  getPokemonById(pokemonId:any):Promise<any>{
+    return this.http.get(`${environment.baseUrl}/api/v2/pokemon/${pokemonId}`).toPromise();
   }
 }

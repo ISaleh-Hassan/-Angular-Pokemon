@@ -1,6 +1,6 @@
 <div class="container">
     <div *ngFor="let pokemon of pokemonList" >
-        <app-pokemon-card [pokemonUrl]="pokemon" ></app-pokemon-card>
+        <app-pokemon-card [pokemonUrl]="pokemon" (onClickCard)="handleCardClick($event)" ></app-pokemon-card>
     </div>
     </div>
     

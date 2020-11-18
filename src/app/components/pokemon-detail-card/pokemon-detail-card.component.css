@@ -1,0 +1,41 @@
+.card{
+    width: 600px;
+}
+
+.img-wrapper{
+    text-align: center;
+}
+
+.pokemon-img{
+    text-align: center;
+    width: 200px;
+    height: auto;
+}
+.pokemon-type{
+    text-align: center;
+    background: chartreuse;
+    padding: 2px;
+    border: 1px black solid;
+    border-radius: 3px;
+    margin-right:0.5rem;
+}
+
+
+.stat{
+    display: grid;
+}
+
+.move-name{
+    text-transform: capitalize;
+    padding: 10px 5px ;
+    border-radius: 1rem;
+    background-color: #f3f3f3;
+    margin-bottom: 10px;
+}
+
+
+
+.name{
+    text-align: center;
+    text-transform: capitalize;
+}

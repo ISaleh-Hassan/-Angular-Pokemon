@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data/data.service';
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 
 @Component({
@@ -8,8 +10,8 @@ import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 })
 export class PokemonPageComponent implements OnInit {
 
-  pokemonList: [];
-  constructor(private pokeService: PokemonService) { };
+  pokemonList: [] | undefined;
+  constructor(private pokeService: PokemonService, public dataService:DataService, private router: Router) { };
 
   ngOnInit(): void {
     this.loadPokemon();
@@ -23,5 +25,10 @@ export class PokemonPageComponent implements OnInit {
       console.log(e);
 
     }
+  }
+
+  handleCardClick(pokemon:any){
+    this.dataService.selectedPokemon = pokemon;
+    this.router.navigate(["/pokemon",pokemon.id])    
   }
 }

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { PokemonPageComponent } from './pages/pokemon-page/pokemon-page.component';
 
 const routes: Routes = [
   {
@@ -25,7 +24,11 @@ const routes: Routes = [
   },
   {
     path: 'pokemon',
-    component: PokemonPageComponent
+    loadChildren: () => import('./pages/pokemon-page/pokemon-page.module').then(m => m.PokemonPageModule),
+  },
+  {
+    path: 'pokemon/:pokemonId',
+    loadChildren: () => import('./pages/pokemon-detail-page/pokemon-detain-page.module').then(m => m.PokemonDetailPageModule),
   }
 ];
 
