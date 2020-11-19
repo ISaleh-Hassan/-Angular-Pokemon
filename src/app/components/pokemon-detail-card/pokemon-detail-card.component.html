@@ -12,10 +12,10 @@
                 <div class="container">
 
                     <div class="row">
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 mb-3">
                             <h2 class="text-center">Stats</h2>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 mb-3">
                             <h2 class="text-center">Types</h2>
                         </div>
                     </div>
@@ -23,19 +23,21 @@
                     <div class="row justify-content-center">
 
                         <div class="col-sm-8">
-                            <div class="row">
-                                <div class="col-sm-6 " *ngFor="let stat of pokemon.stats">
-                                    {{stat.stat.name}}: {{stat.base_stat}}
+                            <div class="row text-center">
+                                <div class="col-sm-6" *ngFor="let stat of pokemon.stats">
+                                    <div class="box">
+                                        {{stat.stat.name}}: {{stat.base_stat}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-4 justify-content-center">
-                            <div class="row">
-                                <div class="col-sm-6 justify-content-center text-center"
-                                    *ngFor="let type of pokemon.types">
-                                    {{type.type.name}}
-
+                            <div class="row text-center justify-content-center">
+                                <div class="col-sm-12 justify-content-center" *ngFor="let type of pokemon.types">
+                                    <div class="box">
+                                        {{type.type.name}}
+                                    </div>
                                 </div>
 
                             </div>
@@ -49,13 +51,39 @@
         <li [ngbNavItem]="2">
             <a ngbNavLink>Information</a>
             <ng-template ngbNavContent>
-                <div>
-                    <div>Height: {{pokemon.height/10}} m</div>
-                    <div>Weight: {{pokemon.weight/10}} kg</div>
-                    <div>Exp: {{pokemon.base_experience}}</div>
-                    <div>Abilities:
-                        <div *ngFor="let ability of pokemon.abilities">
-                            {{ability.ability.name}}
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-6 text-center">
+                            <h2>Information</h2>
+                        </div>
+                        <div class="col-sm-6 text-center">
+                            <h2>Abilities</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-sm-12">
+                                    <div class="box">
+                                        Height: {{pokemon.height/10}}m
+                                    </div>
+                                    <div class="box">Weight: {{pokemon.weight/10}}kg</div>
+                                    <div class="box">Exp: {{pokemon.base_experience}}</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <div class="col-sm-6">
+                    
+                            <div class="row justify-content center text-center">
+                                <div class="col-sm-12">
+                                <div class="box" *ngFor="let ability of pokemon.abilities">
+                                    {{ability.ability.name}}
+                                </div>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,10 +99,13 @@
                     <div class="row justify-content-center">
                         <div class="col-sm-4 justify-content-center"
                             *ngFor="let move of moves | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-                            <div class="d-flex justify-content-center move-name ">{{move.move.name}}</div>
+                            <div class="d-flex justify-content-center box">{{move.move.name}}</div>
                         </div>
+                        
+                    </div>
+                    <div class="row justify-content-center">
                         <div class="d-flex justify-content-center mt-3">
-                            <ngb-pagination [collectionSize]="pokemon.moves.length" [(page)]="page" [maxSize]="5"
+                            <ngb-pagination [collectionSize]="moves.length" [(page)]="page" [maxSize]="5"
                                 [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
                         </div>
                     </div>
