@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
   selector: 'app-pokemon-detail-card',
@@ -12,7 +13,7 @@ export class PokemonDetailCardComponent implements OnInit {
   pageSize = 9;
   moves: any[] = [];
 
-  constructor() { }
+  constructor(private data: DataService) { }
 
 
    
@@ -26,7 +27,9 @@ export class PokemonDetailCardComponent implements OnInit {
   onCollectClick(){
     // Store in session
     console.log(`You collected ${this.pokemon.name}`);
-    localStorage.setItem('pokemon ' + this.pokemon.id, JSON.stringify(this.pokemon))
+    this.data.pokemonList.push(this.pokemon);
+
+    localStorage.setItem('pokemonlist', JSON.stringify(this.data.pokemonList))
   }
 
 }

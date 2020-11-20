@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
-import { TrainerPageComponent } from './components/trainer-page/trainer-page.component';
 
 
 const routes: Routes = [
@@ -13,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'trainer',
-    component: TrainerPageComponent,
+    loadChildren: ()=> import('./components/trainer-page/trainer-page.module').then(m => m.TrainerPageModule),
     canActivate: [ AuthGuard ]
   },
   {

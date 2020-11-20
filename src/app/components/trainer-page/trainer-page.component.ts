@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data/data.service';
 import { SessionService } from 'src/app/services/session/session.service';
 
 @Component({
@@ -11,7 +13,7 @@ export class TrainerPageComponent implements OnInit {
   pokemonList: any[]=[];
 
   
-  constructor(private session: SessionService) { 
+  constructor(private session: SessionService,private dataService: DataService, private router: Router) { 
     this.name= this.session.get().username;
   }
 
@@ -20,9 +22,11 @@ export class TrainerPageComponent implements OnInit {
   }
 
   addPokemons(){
-    if(sessionStorage){
-      console.log(this.session.get())
-      console.log("We got some pokemons here!");
-    }
+    this.pokemonList = this.session.getPokemonList();
+  }
+
+  handleCardClick(pokemon:any){
+    this.dataService.selectedPokemon = pokemon;
+    this.router.navigate(["/pokemon",pokemon.id])    
   }
 }
