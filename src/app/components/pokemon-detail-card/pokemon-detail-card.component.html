@@ -74,15 +74,15 @@
                             </div>
 
                         </div>
-                        
+
                         <div class="col-sm-6">
-                    
+
                             <div class="row justify-content center text-center">
                                 <div class="col-sm-12">
-                                <div class="box" *ngFor="let ability of pokemon.abilities">
-                                    {{ability.ability.name}}
+                                    <div class="box" *ngFor="let ability of pokemon.abilities">
+                                        {{ability.ability.name}}
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -101,12 +101,13 @@
                             *ngFor="let move of moves | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
                             <div class="d-flex justify-content-center box">{{move.move.name}}</div>
                         </div>
-                        
+
                     </div>
                     <div class="row justify-content-center">
                         <div class="d-flex justify-content-center mt-3">
-                            <ngb-pagination [collectionSize]="moves.length" [(page)]="page" [maxSize]="5"
-                                [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+                            <ngb-pagination [collectionSize]="moves.length" [pageSize]="pageSize" [(page)]="page"
+                                [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true">
+                            </ngb-pagination>
                         </div>
                     </div>
                 </div>

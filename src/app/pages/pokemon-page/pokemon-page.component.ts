@@ -9,8 +9,10 @@ import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
   styleUrls: ['./pokemon-page.component.css']
 })
 export class PokemonPageComponent implements OnInit {
-
-  pokemonList: [] | undefined;
+  isLoading = true;
+  pokemonList: any[] = [];
+  trainerPokemonList: any[] = [];
+  listSize = 0;
   constructor(private pokeService: PokemonService, public dataService:DataService, private router: Router) { };
 
   ngOnInit(): void {
@@ -20,10 +22,23 @@ export class PokemonPageComponent implements OnInit {
   async loadPokemon() {
     try {
       const result: any = await this.pokeService.getMultiplePokemon();
-      this.pokemonList = result.results;
+      this.listSize = result.results.length;
+            
+
+      result.results.forEach(async (result: { url: any; }) => {
+        const pokemon = await this.pokeService.getPokemonByUrl(result.url);
+            this.pokemonList.push(pokemon);       
+            this.pokemonList.sort(function(a,b) {return a.id - b.id});
+            if( this.pokemonList.length == this.listSize && this.pokemonList.length >0){
+              this.trainerPokemonList.push(pokemon);
+              this.isLoading = false;
+              
+            } 
+      });      
     } catch (e) {
       console.log(e);
 
+    }finally{
     }
   }
 

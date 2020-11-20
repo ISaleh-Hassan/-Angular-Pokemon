@@ -3,10 +3,21 @@
     text-align: center;
     justify-content: center;
     display: flexbox;
-    height: 200px;
-    width: 200px;
+    height: auto;
+    width: 300px;
     border: 1px black solid;
     margin-right: 10px;
+}
+
+
+.img-wrapper{
+    text-align: center;
+}
+
+.pokemon-img{
+    text-align: center;
+    width: 98px;
+    height: auto;
 }
 
 .card:hover{

@@ -1,6 +1,3 @@
-<div class="container">
-    <div *ngFor="let pokemon of pokemonList" >
-        <app-pokemon-card [pokemonUrl]="pokemon" (onClickCard)="handleCardClick($event)" ></app-pokemon-card>
-    </div>
-    </div>
-    
+<div class="container justify-content-center">
+        <app-pokemon-card-list [pokemonList] = pokemonList (handleCardClick)="handleCardClick($event)"></app-pokemon-card-list>
+</div>
