@@ -1,27 +1,21 @@
-# Pokemon
+# Angular-Pokemon
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
+This project is created by [Saleh Hassan](https://github.com/ISaleh-Hassan) and [Johnny Hoang](https://github.com/flaakan).
 
-## Development server
+Link to [Heroku](https://pokemon-app-angular.herokuapp.com).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Information
+This program is a Pokemon catalogue web app using the Angular Framework. 
 
-## Code scaffolding
+### Features
+* Call Pokemon API to fetch all Pokemons images and names in different cards. These cards present in a Pokemon Catalogue in the main page. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Each Pokemon in en the catalogue is clickable. When the user choose one of the Pokemons the user will se information about the choosen Pokemon and collect it.
 
-## Build
+* The user must be registered to collect Pokemons. The system use Auth guard to check if the user is authenticated, otherwise the system redirect user to register as a trainer. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* The registered trainer and his collected Pokemons will saved in local storge in the browser. That mean the information will be saved until the user delete them.  
 
-## Running unit tests
+#### Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
