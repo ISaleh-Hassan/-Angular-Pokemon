@@ -4,7 +4,7 @@
     justify-content: center;
     display: flexbox;
     height: auto;
-    width: 300px;
+    width: 250;
     border: 1px black solid;
     margin-right: 10px;
 }
@@ -26,4 +26,8 @@
 
 .name{
     text-transform: capitalize;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 20px;
 }

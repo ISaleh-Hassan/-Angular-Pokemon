@@ -1,6 +1,6 @@
-<div *ngIf="pokemonList.length > 0" class="container justify-content-center">
+<div class="container justify-content-center">
 <div class="row justify-content-center">
-    <div class="col-sm-4" *ngFor="let pokemon of pokemonList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+    <div class="col-sm-3 mb-3" *ngFor="let pokemon of pokemonList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
         <app-pokemon-card [pokemon]="pokemon" (onClickCard)="onCardClick($event)"></app-pokemon-card>
 </div>
 </div>
@@ -9,7 +9,7 @@
 <div class="row justify-content-center mt-3">
 
     <ngb-pagination [collectionSize]="pokemonList.length" [pageSize]="pageSize" [(page)]="page" [maxSize]="5"
-        [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+        [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
 
 </div>
 </div>

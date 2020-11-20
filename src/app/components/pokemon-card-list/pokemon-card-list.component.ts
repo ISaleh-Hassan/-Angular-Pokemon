@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PokemonCardListComponent implements OnInit {
   page = 1;
-  pageSize = 3;
+  pageSize = 12;
   @Input() pokemonList: any[] = [];
   @Output() handleCardClick: EventEmitter<any> = new EventEmitter();
 

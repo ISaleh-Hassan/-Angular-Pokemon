@@ -11,7 +11,7 @@ export class PokemonService {
 
   getMultiplePokemon():Promise<any>{
 
-    return this.http.get(`${environment.baseUrl}/api/v2/pokemon?limit=10`).toPromise();
+    return this.http.get(`${environment.baseUrl}/api/v2/pokemon?limit=1000`).toPromise();
   }
   getPokemonByUrl(url : string):Promise<any>{
     return this.http.get(url).toPromise();
