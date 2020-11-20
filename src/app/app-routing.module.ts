@@ -32,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'pokemon/:pokemonId',
-    loadChildren: () => import('./pages/pokemon-detail-page/pokemon-detain-page.module').then(m => m.PokemonDetailPageModule),
+    loadChildren: () => import('./pages/pokemon-detail-page/pokemon-detail-page.module').then(m => m.PokemonDetailPageModule),
     canActivate: [ AuthGuard ]
   }
 ];

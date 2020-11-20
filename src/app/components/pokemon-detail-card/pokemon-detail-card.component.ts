@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PokemonDetailCardComponent implements OnInit {
   @Input() pokemon:any;
-  activeTab = 1;
+  activeTab = 2;
   page = 1;
   pageSize = 9;
   moves: any[] = [];
@@ -17,9 +17,7 @@ export class PokemonDetailCardComponent implements OnInit {
 
    
   ngOnInit(): void {
-    this.moves = this.pokemon.moves;
-    console.log(this.pokemon.stats);
-    
+    this.moves = this.pokemon.moves;    
     this.moves.forEach(move =>{
       move.move.name = move.move.name.replace("-"," ");
     })
