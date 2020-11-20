@@ -17,5 +17,5 @@ This program is a Pokemon catalogue web app using the Angular Framework.
 * The registered trainer and his collected Pokemons will saved in local storge in the browser. That mean the information will be saved until the user delete them.  
 
 #### Usage
-
+![](javascriptApp.gif)
 
