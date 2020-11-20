@@ -1,4 +1,4 @@
-<div class="container justify-content-center">
+<div *ngIf="pokemonList.length > 0" class="container justify-content-center">
 <div class="row justify-content-center">
     <div class="col-sm-4" *ngFor="let pokemon of pokemonList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
         <app-pokemon-card [pokemon]="pokemon" (onClickCard)="onCardClick($event)"></app-pokemon-card>

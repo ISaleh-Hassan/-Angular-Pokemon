@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class SessionService {
 
+  pokemonList: any[] = this.getPokemonList();
+
   constructor() { }
 
   save(session: any){
@@ -18,6 +20,10 @@ export class SessionService {
 
   getPokemonList(): any {
     const savedSession = localStorage.getItem('pokemonlist');
-    return savedSession ? JSON.parse(savedSession) : false;
+    return savedSession ? JSON.parse(savedSession) : [];
+  }
+
+  addPokemon(pokemon:any){
+    this.pokemonList.push(pokemon);
   }
 }
