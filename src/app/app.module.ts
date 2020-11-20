@@ -7,7 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { TrainerPageComponent } from './components/trainer-page/trainer-page.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -15,8 +16,7 @@ import { TrainerPageComponent } from './components/trainer-page/trainer-page.com
   declarations: [
     AppComponent,
     RegisterComponent,
-    DashboardComponent,
-    TrainerPageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +24,7 @@ import { TrainerPageComponent } from './components/trainer-page/trainer-page.com
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,8 +16,8 @@ export class SessionService {
     return savedSession ? JSON.parse(savedSession) : false;
   }
 
-  addPokemon(newPokemon:any){
-    sessionStorage.setItem('deletedItems', JSON.stringify(newPokemon))
+  getPokemonList(): any {
+    const savedSession = localStorage.getItem('pokemonlist');
+    return savedSession ? JSON.parse(savedSession) : false;
   }
-  
 }
