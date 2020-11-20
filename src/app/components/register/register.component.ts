@@ -13,11 +13,9 @@ import { SessionService } from 'src/app/services/session/session.service';
 export class RegisterComponent implements OnInit {
 
  registerForm: FormGroup = new FormGroup({
-    username: new FormControl('', [ Validators.required, Validators.minLength(3)])
-  });
+    username: new FormControl('', [ Validators.required, Validators.minLength(3)]),
 
-  isLoading: boolean = false;
-  registerError!: string;
+  });
 
   constructor(private session: SessionService, private router:Router) { 
     if(this.session.get() !==false){
@@ -33,19 +31,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterClicked(){
-    this.registerError = '';
 
-    try{
-
-      this.isLoading= true;
       this.session.save(this.registerForm.value);  
-      this.router.navigateByUrl('/pokemon');
-
-    }catch(e){
-      console.error(e);
-      this.registerError = e.error.error;
-    }finally{
-      this.isLoading= false;
-    }
+      this.router.navigateByUrl('/trainer');
+  
   }
 }
