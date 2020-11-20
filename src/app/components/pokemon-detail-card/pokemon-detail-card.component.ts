@@ -11,6 +11,7 @@ export class PokemonDetailCardComponent implements OnInit {
   page = 1;
   pageSize = 9;
   moves: any[] = [];
+
   constructor() { }
 
 
@@ -27,8 +28,7 @@ export class PokemonDetailCardComponent implements OnInit {
   onCollectClick(){
     // Store in session
     console.log(`You collected ${this.pokemon.name}`);
-    
+    localStorage.setItem('pokemon ' + this.pokemon.id, JSON.stringify(this.pokemon))
   }
-
 
 }

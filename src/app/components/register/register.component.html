@@ -8,16 +8,20 @@
         </div>
     
         <div class="form-group">
-            <button class="btn btn-success btn-lg" (click)="onRegisterClicked()" type="button" [disabled]="isLoading || registerForm.invalid">Register</button>
+            <button class="btn btn-success btn-lg" (click)="onRegisterClicked()" type="button" [disabled]="registerForm.invalid">Register</button>
         </div>
    
-        <div *ngIf="registerError" class="alert alert-danger" role="alert">
-            <h4>Something went wrong</h4>
-            <p>{{ registerError }}</p>
+        <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+
+            <div *ngIf="username?.errors!.required">
+                <p>Username is required</p>
+            </div>
+
+            <div *ngIf="username?.errors!.minlength">
+                <p>Username must be at least 2 characters long</p>
+            </div>
         </div>
-        <div *ngIf="isLoading">
-            <p>Register a new trainer</p>
-        </div>
+
     </form>
      
 </div>

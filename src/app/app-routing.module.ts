@@ -3,11 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
+import { TrainerPageComponent } from './components/trainer-page/trainer-page.component';
+
 
 const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'trainer',
+    component: TrainerPageComponent,
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'dashboard',

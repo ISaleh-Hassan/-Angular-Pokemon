@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TrainerPageComponent } from './components/trainer-page/trainer-page.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     RegisterComponent,
     DashboardComponent,
+    TrainerPageComponent,
   ],
   imports: [
     BrowserModule,
